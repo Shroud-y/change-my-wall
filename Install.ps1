@@ -30,7 +30,7 @@ $setScript = Join-Path $PSScriptRoot 'Set-Wallpaper.ps1'
 $syncScript = Join-Path $PSScriptRoot 'Sync-LockScreen.ps1'
 
 New-Item -Path $menuKey -Force | Out-Null
-Set-ItemProperty -LiteralPath $menuKey -Name 'MUIVerb' -Value 'Поставити на робочий стіл + лок скрін'
+Set-ItemProperty -LiteralPath $menuKey -Name 'MUIVerb' -Value 'Set as desktop + lock screen'
 Set-ItemProperty -LiteralPath $menuKey -Name 'Icon' -Value 'imageres.dll,-5346'
 New-Item -Path "$menuKey\command" -Force | Out-Null
 Set-ItemProperty -LiteralPath "$menuKey\command" -Name '(default)' `
@@ -40,5 +40,5 @@ $syncArgs = "--headless `"$ps`" -NoProfile -ExecutionPolicy Bypass -File `"$sync
 Set-ItemProperty -LiteralPath $runKey -Name $runName -Value "`"$conhost`" $syncArgs"
 Start-Process -FilePath $conhost -ArgumentList $syncArgs
 
-Write-Host 'Installed. Right-click an image -> Show more options -> "Поставити на робочий стіл + лок скрін".'
+Write-Host 'Installed. Right-click an image -> Show more options -> "Set as desktop + lock screen".'
 Write-Host "Watcher running; log: $env:LOCALAPPDATA\WallSync\sync.log"
