@@ -1,4 +1,4 @@
-# change-my-fucking-wall
+# Change My Wall
 
 Windows makes you set the desktop wallpaper and the lock screen separately. I'm done with that. This adds a right-click option for images that sets both at once.
 
