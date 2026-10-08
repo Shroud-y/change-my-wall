@@ -26,6 +26,8 @@ $setScript = Join-Path $PSScriptRoot 'Set-Wallpaper.ps1'
 New-Item -Path $menuKey -Force | Out-Null
 Set-ItemProperty -LiteralPath $menuKey -Name 'MUIVerb' -Value 'Set as desktop + lock screen'
 Set-ItemProperty -LiteralPath $menuKey -Name 'Icon' -Value 'imageres.dll,-5346'
+# One image only: with several selected, Explorer would start one script per file and they would race.
+Set-ItemProperty -LiteralPath $menuKey -Name 'MultiSelectModel' -Value 'Single'
 New-Item -Path "$menuKey\command" -Force | Out-Null
 Set-ItemProperty -LiteralPath "$menuKey\command" -Name '(default)' `
     -Value "`"$conhost`" --headless `"$ps`" -NoProfile -ExecutionPolicy Bypass -File `"$setScript`" -Gui `"%1`""
